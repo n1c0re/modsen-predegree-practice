@@ -1,0 +1,28 @@
+﻿.searchbar {
+    position: fixed;
+    width: 25vw;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-width: 0px 2px 0px 0;
+    border-style: solid;
+    border-color: #b0b0b0;
+    justify-content: space-between;
+    left: -200vw;
+    transition: left 0.3s ease;
+}
+
+.searchbar.open {
+    left: 8vw;
+}
+
+@media screen and (max-width: 768px) {
+    .searchbar {
+        width: 40vw;
+    }
+
+    .searchbar.open {
+        left: 12vw;
+    }
+}
