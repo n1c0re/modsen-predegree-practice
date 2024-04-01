@@ -1,7 +1,7 @@
 ﻿import { useEffect,useState } from 'react';
 
 const usePosition = () => {
-    const [position, setPosition] = useState(null);
+    const [position, setPosition] = useState();
 
     const getLocation = () => {
         if ('geolocation' in navigator) {

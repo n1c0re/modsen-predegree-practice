@@ -1,16 +1,10 @@
 ﻿import 'leaflet/dist/leaflet.css'
 
-import { useEffect } from 'react';
-import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet';
-
-import usePosition from '@/Hooks/usePosition';
+import usePosition from '@hooks/usePosition';
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 
 const Map = () => {
-    const { position, getLocation } = usePosition();
-
-    useEffect(() => {
-        getLocation();
-    }, [getLocation]);
+    const { position } = usePosition();
 
     return (
         <div className='content'>
@@ -20,6 +14,9 @@ const Map = () => {
                     <TileLayer
                         url={import.meta.env.VITE_TILE_URL}
                     />
+                    <Marker position={position}>
+                        <Popup>You are here!</Popup>
+                    </Marker>
                 </MapContainer>
             )}
         </div>
