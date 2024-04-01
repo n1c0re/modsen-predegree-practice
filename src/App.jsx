@@ -1,10 +1,14 @@
 import './App.css'
 
 import Map from '@/Map/Map'
+import Sidebar from '@/SideBar/SideBar'
 
 function App() {
   return (
-    <Map />
+    <>
+      <Sidebar />
+      <Map />
+    </>
   )
 }
 
