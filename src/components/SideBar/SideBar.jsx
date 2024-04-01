@@ -1,21 +1,30 @@
-﻿import './SideBar.css'
+﻿/* eslint-disable no-unused-vars */
+import './SideBar.css'
 
-import favouriteImg from "@assets/favourite.svg";
+import favouriteOffImg from "@assets/favourite-off.svg";
+import favouriteOnImg from "@assets/favourite-on.svg";
 import loginImg from "@assets/login.svg";
 import logoImg from "@assets/logo.svg";
-import searchImg from "@assets/search.svg";
+import searchOffImg from "@assets/search-off.svg";
+import searchOnImg from "@assets/search-on.svg";
 import { useState } from 'react';
 
 import SearchBar from '@/SearchBar/SearchBar';
 
 const Sidebar = () => {
     const [searchBarOpen, setSearchBarOpen] = useState(false);
+    const [favouriteBarOpen, setFavouriteBarOpen] = useState(false);
 
     const toggleSearchBar = () => {
         setSearchBarOpen(!searchBarOpen);
+        setFavouriteBarOpen(false);
     }
 
-    console.log(searchBarOpen);
+    const toggleFavouriteBar = () => {
+        setFavouriteBarOpen(!favouriteBarOpen);
+        setSearchBarOpen(false);
+    }
+
     return (
         <div className='sidebar'>
             <div className="search-buttons">
@@ -23,10 +32,10 @@ const Sidebar = () => {
                     <img src={logoImg} alt='logo' />
                 </button>
                 <button className="sidebar-button" onClick={toggleSearchBar}>
-                    <img src={searchImg} alt='search' />
+                    <img src={searchBarOpen ? searchOnImg : searchOffImg} alt='search' />
                 </button>
-                <button className="sidebar-button">
-                    <img src={favouriteImg} alt='favourite' />
+                <button className="sidebar-button" onClick={toggleFavouriteBar}>
+                    <img src={favouriteBarOpen ? favouriteOnImg : favouriteOffImg} alt='favourite' />
                 </button>
             </div>
             <button className='login-button'>
