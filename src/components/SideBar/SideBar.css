@@ -1,40 +1,40 @@
 ﻿.sidebar {
-    position: fixed;
-    z-index: 1000;
-    width: 8vw;
-    height: 100vh;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    border-width: 0px 2px 0px 0;
-    border-style: solid;
-    border-color: #b0b0b0;
-    justify-content: space-between;
-    align-items: center;
+  position: fixed;
+  z-index: 1000;
+  width: 8vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  border-width: 0px 2px 0px 0;
+  border-style: solid;
+  border-color: #b0b0b0;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search-buttons {
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
 }
 
 .sidebar-button {
-    background-color: #ffffff;
-    padding-top: 12px;
+  background-color: #ffffff;
+  padding-top: 12px;
 }
 
 .login-button {
-    padding-bottom: 20px;
-    background-color: #ffffff;
+  padding-bottom: 20px;
+  background-color: #ffffff;
 }
 
 @media screen and (max-width: 768px) {
-    .sidebar {
-        width: 18vw;
-    }
+  .sidebar {
+    width: 18vw;
+  }
 }
 
 .sidebar img {
-    max-width: 90%;
+  max-width: 90%;
 }
