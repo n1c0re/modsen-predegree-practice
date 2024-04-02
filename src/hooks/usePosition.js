@@ -39,7 +39,7 @@ const usePosition = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        dispatch(setPosition([position.coords.latitude, position.coords.longitude]));
+        dispatch(setPosition([position.coords.longitude, position.coords.latitude,]));
       },
       (error) => {
         if (error.PERMISSION_DENIED) {
@@ -51,7 +51,6 @@ const usePosition = () => {
     );
   }, [dispatch]);
 
-  // console.log(position);
   return { position };
 };
 

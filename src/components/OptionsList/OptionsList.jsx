@@ -26,7 +26,7 @@ const OptionsList = ({ optionSelect, selectedOption }) => {
     { label: 'Индустриальные объекты', imgSrc: industryImg, kind: 'industrial_facilities' },
     { label: 'Разное', imgSrc: otherImg, kind: 'other' },
     { label: 'Спорт', imgSrc: sportImg, kind: 'sport' },
-    { label: 'Еда', imgSrc: foodImg, kind: 'food' },
+    { label: 'Еда', imgSrc: foodImg, kind: 'foods' },
     { label: 'Магазины', imgSrc: shopImg, kind: 'shops' },
     { label: 'Кафе', imgSrc: coffeeImg, kind: 'cafes' },
     { label: 'Развлечения', imgSrc: attractionImg, kind: 'tourist_object' },

@@ -7,18 +7,16 @@ import searchOnImg from "@assets/search-on.svg";
 import usePosition from '@hooks/usePosition';
 import useSights from '@hooks/useSights';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import OptionsList from '@/OptionsList/OptionsList';
 
 const SearchBar = ({ isOpen }) => {
-  const {position} = usePosition();
+  const { position } = usePosition();
+  const { getSights } = useSights();
 
-  console.log(position);
   const [selectedOption, setSelectedOption] = useState();
   const [searchText, setSearchText] = useState();
 
-  const { markers, getSights } = useSights();
 
   const optionSelect = (event) => {
     setSelectedOption(event.currentTarget.id);
@@ -32,7 +30,6 @@ const SearchBar = ({ isOpen }) => {
     getSights(position, selectedOption)
   }
 
-  // console.log(markers);
   return (
     <div className={`searchbar ${isOpen ? 'open' : ''}`}>
       <div className='inputs'>
