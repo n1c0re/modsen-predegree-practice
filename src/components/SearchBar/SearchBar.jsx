@@ -1,11 +1,9 @@
-﻿/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import './SearchBar.css'
+﻿import './SearchBar.css';
 
-import searchIconImg from "@assets/search-icon.svg";
-import searchOnImg from "@assets/search-on.svg";
+import { searchBigImg, searchIconImg } from '@constants/icons';
 import usePosition from '@hooks/usePosition';
 import useSights from '@hooks/useSights';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import OptionsList from '@/OptionsList/OptionsList';
@@ -13,21 +11,22 @@ import OptionsList from '@/OptionsList/OptionsList';
 const SearchBar = ({ isOpen }) => {
   const { position } = usePosition();
   const { getSights } = useSights();
+  const [searchParams, setSearchParams] = useState({ selectedOption: '', searchText: '', searchRadius: '' });
 
-  const [selectedOption, setSelectedOption] = useState();
-  const [searchText, setSearchText] = useState();
-
-
-  const optionSelect = (event) => {
-    setSelectedOption(event.currentTarget.id);
+  const handleOptionSelect = (event) => {
+    setSearchParams({ ...searchParams, selectedOption: event.currentTarget.id });
   };
 
   const handleInputText = (event) => {
-    setSearchText(event.currentTarget.value);
+    setSearchParams({ ...searchParams, searchText: event.currentTarget.value });
   }
 
+  const handleSearchRadius = (event) => {
+    setSearchParams({ ...searchParams, searchRadius: event.currentTarget.value });
+  }
+  
   const handleGetSights = () => {
-    getSights(position, selectedOption)
+    getSights(position, searchParams)
   }
 
   return (
@@ -38,18 +37,22 @@ const SearchBar = ({ isOpen }) => {
           <input placeholder='Место, адрес...' onChange={handleInputText} />
         </div>
         Искать:
-        <OptionsList optionSelect={optionSelect} selectedOption={selectedOption} />
+        <OptionsList optionSelect={handleOptionSelect} selectedOption={searchParams.selectedOption} />
         В радиусе:
         <div className='radius'>
-          <input className='radius-input' id='radius-input' type='number' />
+          <input className='radius-input' type='number' onChange={handleSearchRadius}/>
           км
         </div>
       </div>
       <button className='search-button' onClick={handleGetSights}>
-        <img src={searchOnImg} alt='search' />
+        <img src={searchBigImg} alt='search' />
       </button>
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+};
 
 export default SearchBar;

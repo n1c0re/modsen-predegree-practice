@@ -1,7 +1,7 @@
 ﻿.sidebar {
   position: fixed;
   z-index: 1000;
-  width: 8vw;
+  width: 6vw;
   height: 100vh;
   background-color: #ffffff;
   display: flex;
@@ -31,7 +31,7 @@
 
 @media screen and (max-width: 768px) {
   .sidebar {
-    width: 18vw;
+    width: 14vw;
   }
 }
 

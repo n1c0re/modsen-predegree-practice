@@ -1,8 +1,11 @@
 ﻿import 'leaflet/dist/leaflet.css'
 
+import { userMarkerImg } from '@constants/icons'
 import usePosition from '@hooks/usePosition';
 import useSights from '@hooks/useSights';
-import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet';
+import { Icon } from 'leaflet';
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster'
 
 import LocationMarker from '@/LocationMarker/LocationMarker';
 
@@ -11,19 +14,30 @@ const Map = () => {
   const { markers } = useSights();
 
   const sightsMarkers = markers.map(marker => (
-    <LocationMarker key={marker.id} position={marker.geometry.coordinates} name={marker.properties.name} kind={marker.kind} />
+    <div className='info' key={marker.properties.xid} >
+      <LocationMarker key={marker.properties.xid} position={marker.geometry.coordinates} name={marker.properties.name} kind={marker.kind} />
+    </div>
   ))
+
+  const customIcon = new Icon({
+    iconUrl: userMarkerImg,
+    iconSize: [30, 30]
+  })
 
   return (
     <div className='content'>
       {position && (
-        <MapContainer center={[position[1], position[0]]} zoom={13} zoomControl={false}>
+        <MapContainer center={position} zoom={13} zoomControl={false}>
           <ZoomControl position='topright' />
-          {sightsMarkers}
           <TileLayer
             url={import.meta.env.VITE_TILE_URL}
           />
-          <LocationMarker position={position} name={"You are here!"}/>
+          <MarkerClusterGroup chunkedLoading>
+            {sightsMarkers}
+          </MarkerClusterGroup>
+          <Marker position={position} icon={customIcon}>
+            <Popup>You are here!</Popup>
+          </Marker>
         </MapContainer>
       )}
     </div>

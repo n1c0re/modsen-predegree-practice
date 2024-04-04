@@ -6,17 +6,24 @@ const useSights = () => {
   const dispatch = useDispatch();
   const markers = useSelector((state) => state.sights);
 
-  const getSights = async (position, kind) => {
+  const getSights = async (position, searchParams) => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_OTM_URL}radius?radius=5000&lon=${position[0]}&lat=${position[1]}&kinds=${kind}&apikey=${import.meta.env.VITE_OTM_API_KEY}`);
+      const response = await axios.get(buildUrl(position, searchParams));
       const modifiedMarkers = response.data.features.map(feature => ({
         ...feature,
-        kind
+        kind: searchParams.selectedOption
       }));
       dispatch(setMarkers(modifiedMarkers));
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+
+  const buildUrl = (position, searchParams) => {
+    const radius = searchParams.radius ? searchParams.radius : '5000';
+    const name = searchParams.name ? `&name=${searchParams.name}` : '';
+    return `${import.meta.env.VITE_OTM_URL}radius?radius=${radius}&lon=${position[1]}&lat=${position[0]}
+    &kinds=${searchParams.selectedOption}&apikey=${import.meta.env.VITE_OTM_API_KEY}${name}`;
   };
 
   return { markers, getSights };
