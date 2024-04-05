@@ -1,12 +1,6 @@
-﻿/* eslint-disable no-unused-vars */
-import './SideBar.css'
+﻿import './SideBar.css'
 
-import favouriteOffImg from "@assets/favourite-off.svg";
-import favouriteOnImg from "@assets/favourite-on.svg";
-import loginImg from "@assets/login.svg";
-import logoImg from "@assets/logo.svg";
-import searchOffImg from "@assets/search-off.svg";
-import searchOnImg from "@assets/search-on.svg";
+import { favouriteOffImg, favouriteOnImg, loginImg, logoImg, searchOffImg, searchOnImg } from '@constants/icons'
 import { useState } from 'react';
 
 import SearchBar from '@/SearchBar/SearchBar';
