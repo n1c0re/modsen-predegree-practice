@@ -53,6 +53,8 @@
   cursor: pointer;
   padding-bottom: 12px;
   height: 10vh;
+  display: flex;
+  align-items: flex-end;
 }
 
 .search-input img {
@@ -67,7 +69,7 @@
 }
 
 .search-button img {
- max-width: 100%;
+  max-width: 100%;
 }
 
 input::-webkit-outer-spin-button,

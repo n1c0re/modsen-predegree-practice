@@ -9,7 +9,8 @@ const useSights = () => {
   const getSights = async (position, searchParams) => {
     try {
       const response = await axios.get(buildUrl(position, searchParams));
-      const modifiedMarkers = response.data.features.map(feature => ({
+      const filteredFeatures = response.data.features.filter(feature => feature.properties.name.length > 3);
+      const modifiedMarkers = filteredFeatures.map(feature => ({
         ...feature,
         kind: searchParams.selectedOption
       }));
