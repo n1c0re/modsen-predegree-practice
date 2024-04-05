@@ -2,7 +2,7 @@
 
 const positionSlice = createSlice({
   name: 'position',
-  initialState: null,
+  initialState: [55.490295, 28.782988],
   reducers: {
     setPosition(state, action) {
       return action.payload;

@@ -12,11 +12,7 @@ const usePosition = () => {
         dispatch(setPosition([position.coords.latitude, position.coords.longitude]));
       },
       (error) => {
-        if (error.PERMISSION_DENIED) {
-          dispatch(setPosition([55.490295, 28.782988]));
-        } else {
-          console.error('Error getting geolocation:', error);
-        }
+        console.error('Error getting geolocation:', error);
       }
     );
   }, [dispatch]);

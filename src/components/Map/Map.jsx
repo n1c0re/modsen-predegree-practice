@@ -7,6 +7,7 @@ import { Icon } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster'
 
+import ChangeView from '@/ChangeView/ChangeView';
 import LocationMarker from '@/LocationMarker/LocationMarker';
 
 const Map = () => {
@@ -28,6 +29,7 @@ const Map = () => {
     <div className='content'>
       {position && (
         <MapContainer center={position} zoom={13} zoomControl={false}>
+          <ChangeView />
           <ZoomControl position='topright' />
           <TileLayer
             url={import.meta.env.VITE_TILE_URL}
