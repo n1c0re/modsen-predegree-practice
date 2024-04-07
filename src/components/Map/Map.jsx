@@ -14,11 +14,11 @@ const Map = () => {
   const { position } = usePosition();
   const { markers } = useSights();
 
-  const sightsMarkers = markers.map(marker => (
-    <div className='info' key={marker.properties.xid} >
-      <LocationMarker key={marker.properties.xid} position={marker.geometry.coordinates} name={marker.properties.name} kind={marker.kind} />
-    </div>
-  ))
+  const sightsMarkers = markers.map(({ properties, geometry, kind }) => (
+    <LocationMarker key={properties.xid} position={geometry.coordinates} name={properties.name}
+      rate={properties.rate} kind={kind} id={properties.xid}
+    />
+  ));
 
   const customIcon = new Icon({
     iconUrl: userMarkerImg,
