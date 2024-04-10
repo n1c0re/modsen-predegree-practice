@@ -1,7 +1,7 @@
 ﻿import './LocationMarker.css';
 
 import * as images from '@constants/icons';
-import { toggleFavorite } from '@store/reducers/favoritesSlice';
+import { toggleFavorite } from '@store/reducers/favoritesIdSlice';
 import { Icon } from 'leaflet';
 import PropTypes from 'prop-types';
 import { Marker, Popup } from 'react-leaflet';
@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const LocationMarker = ({ position, name, kind, rate, id }) => {
   const dispatch = useDispatch();
-  const isFavorite = useSelector(state => state.favorites.includes(id));
+  const isFavorite = useSelector(state => state.favoritesId.includes(id));
 
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite({ id }));

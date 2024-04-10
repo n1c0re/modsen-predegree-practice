@@ -24,6 +24,7 @@ import shopsImg from '@assets/shop.svg'
 import accomodationsImg from '@assets/sleep.svg'
 import sportImg from '@assets/sport.svg'
 import starImg from '@assets/star.svg'
+import undefinedPlaceImg from '@assets/undefined-place.svg'
 import userMarkerImg from '@assets/user-marker.svg'
 
 export {
@@ -53,5 +54,6 @@ export {
   sportImg,
   starImg,
   tourist_objectImg,
+  undefinedPlaceImg,
   userMarkerImg
 };

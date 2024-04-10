@@ -9,6 +9,7 @@ const useSights = () => {
   const getSights = async (position, searchParams) => {
     try {
       const response = await axios.get(buildUrl(position, searchParams));
+      console.log(response);
       const filteredFeatures = response.data.features.filter(feature => feature.properties.name.length > 3);
       const modifiedMarkers = filteredFeatures.map(feature => ({
         ...feature,
@@ -21,7 +22,8 @@ const useSights = () => {
   };
 
   const buildUrl = (position, searchParams) => {
-    const radius = searchParams.radius ? searchParams.radius : '5000';
+    console.log(searchParams);
+    const radius = (searchParams.searchRadius !== '') ? searchParams.searchRadius : '5000';
     const name = searchParams.name ? `&name=${searchParams.name}` : '';
     return `${import.meta.env.VITE_OTM_URL}radius?radius=${radius}&lon=${position[1]}&lat=${position[0]}
     &kinds=${searchParams.selectedOption}&apikey=${import.meta.env.VITE_OTM_API_KEY}${name}`;

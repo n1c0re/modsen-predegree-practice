@@ -3,6 +3,7 @@
 import { favouriteOffImg, favouriteOnImg, loginImg, logoImg, searchOffImg, searchOnImg } from '@constants/icons'
 import { useState } from 'react';
 
+import FavoriteBar from '@/FavoriteBar/FavoriteBar';
 import SearchBar from '@/SearchBar/SearchBar';
 
 const Sidebar = () => {
@@ -36,6 +37,7 @@ const Sidebar = () => {
         <img src={loginImg} alt='login' />
       </button>
       <SearchBar isOpen={searchBarOpen} />
+      <FavoriteBar isOpen={favouriteBarOpen} />
     </div>
   );
 };
