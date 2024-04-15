@@ -3,12 +3,12 @@
 import options from '@constants/options';
 import PropTypes from 'prop-types';
 
-const OptionsList = ({ optionSelect, selectedOption }) => {
+const OptionsList = ({ optionSelect, selectedOptions }) => {
   return (
     <div className="custom-select" tabIndex="0">
       <ul className="options">
         {options.map((option, index) => (
-          <li key={index} id={option.kind} onClick={optionSelect} className={selectedOption == option.kind ? 'selected' : ''}>
+          <li key={index} id={option.kind} onClick={optionSelect} className={selectedOptions.includes(option.kind) ? 'selected' : ''}>
             <img src={option.imgSrc} alt={option.label} />{option.label}
           </li>
         ))}
@@ -19,7 +19,7 @@ const OptionsList = ({ optionSelect, selectedOption }) => {
 
 OptionsList.propTypes = {
   optionSelect: PropTypes.func.isRequired,
-  selectedOption: PropTypes.string.isRequired,
+  selectedOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default OptionsList;

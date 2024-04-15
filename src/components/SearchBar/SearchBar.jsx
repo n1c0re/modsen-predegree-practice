@@ -13,10 +13,23 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const { position } = usePosition();
   const { getSights } = useSights();
-  const [searchParams, setSearchParams] = useState({ selectedOption: '', searchText: '', searchRadius: '' });
+  const [searchParams, setSearchParams] = useState({ selectedOptions: [], searchText: '', searchRadius: '' });
 
   const handleOptionSelect = (event) => {
-    setSearchParams({ ...searchParams, selectedOption: event.currentTarget.id });
+    const optionId = event.currentTarget.id;
+    const isSelected = searchParams.selectedOptions.includes(optionId);
+
+    if (isSelected) {
+      setSearchParams(prevState => ({
+        ...prevState,
+        selectedOptions: prevState.selectedOptions.filter(option => option !== optionId)
+      }));
+    } else {
+      setSearchParams(prevState => ({
+        ...prevState,
+        selectedOptions: [...prevState.selectedOptions, optionId]
+      }));
+    }
   };
 
   const handleInputText = (event) => {
@@ -40,7 +53,7 @@ const SearchBar = () => {
           <input placeholder='Название' onChange={handleInputText} />
         </div>
         Искать:
-        <OptionsList optionSelect={handleOptionSelect} selectedOption={searchParams.selectedOption} />
+        <OptionsList optionSelect={handleOptionSelect} selectedOptions={searchParams.selectedOptions} />
         В радиусе:
         <div className='radius'>
           <input placeholder='5000' className='radius-input' type='number' onChange={handleSearchRadius} />
