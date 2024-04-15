@@ -2,7 +2,7 @@
 
 const radiusSlice = createSlice({
   name: 'radius',
-  initialState: [],
+  initialState: [5000],
   reducers: {
     setRadius(state, action) {
       return action.payload;

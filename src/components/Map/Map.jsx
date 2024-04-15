@@ -6,6 +6,7 @@ import { Icon } from 'leaflet';
 import { Circle, MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster'
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 
 import ChangeView from '@/ChangeView/ChangeView';
 import PlaceMarkers from '@/PlaceMarkers/PlaceMarkers';
@@ -13,6 +14,7 @@ import PlaceMarkers from '@/PlaceMarkers/PlaceMarkers';
 const Map = () => {
   const { position } = usePosition();
   const searchRadius = useSelector((state) => state.radius);
+  const { pathname } = useLocation();
 
   const customIcon = new Icon({
     iconUrl: userMarkerImg,
@@ -31,7 +33,7 @@ const Map = () => {
           <MarkerClusterGroup chunkedLoading>
             <PlaceMarkers />
           </MarkerClusterGroup>
-          {!isNaN(searchRadius) && (
+          {!isNaN(searchRadius) && pathname==='/search' &&(
             <Circle center={position} radius={searchRadius} />
           )}
           <Marker position={position} icon={customIcon}>
