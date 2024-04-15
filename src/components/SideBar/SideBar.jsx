@@ -1,8 +1,8 @@
 ﻿import './SideBar.css'
 
-import { favoriteOffImg, favoriteOnImg, loginImg, logoImg, searchOffImg,searchOnImg } from '@constants/icons'
+import { favoriteOffImg, favoriteOnImg, loginImg, logoImg, searchOffImg, searchOnImg } from '@constants/icons'
 import routes from '@constants/routes.js'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
@@ -19,9 +19,9 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className="search-buttons">
-        <button className="sidebar-button">
+        <Link to={routes.HOME}>
           <img src={logoImg} alt='logo' />
-        </button>
+        </Link>
         <button className="sidebar-button" onClick={toggleSearchBar}>
           <img src={pathname === routes.SEARCH ? searchOnImg : searchOffImg} alt='search' />
         </button>

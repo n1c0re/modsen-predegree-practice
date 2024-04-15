@@ -3,11 +3,14 @@
 import { searchBigImg, searchIconImg } from '@constants/icons';
 import usePosition from '@hooks/usePosition';
 import useSights from '@hooks/useSights';
+import { setRadius } from '@store/reducers/radiusSlice';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import OptionsList from '@/OptionsList/OptionsList';
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
   const { position } = usePosition();
   const { getSights } = useSights();
   const [searchParams, setSearchParams] = useState({ selectedOption: '', searchText: '', searchRadius: '' });
@@ -22,6 +25,7 @@ const SearchBar = () => {
 
   const handleSearchRadius = (event) => {
     setSearchParams({ ...searchParams, searchRadius: event.currentTarget.value });
+    dispatch(setRadius(event.currentTarget.value));
   }
 
   const handleGetSights = () => {

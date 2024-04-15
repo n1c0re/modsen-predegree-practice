@@ -4,8 +4,9 @@ import { userMarkerImg } from '@constants/icons'
 import usePosition from '@hooks/usePosition';
 import useSights from '@hooks/useSights';
 import { Icon } from 'leaflet';
-import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
+import { Circle, MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster'
+import { useSelector } from 'react-redux';
 
 import ChangeView from '@/ChangeView/ChangeView';
 import LocationMarker from '@/LocationMarker/LocationMarker';
@@ -13,7 +14,9 @@ import LocationMarker from '@/LocationMarker/LocationMarker';
 const Map = () => {
   const { position } = usePosition();
   const { markers } = useSights();
+  const searchRadius = useSelector((state) => state.radius);
 
+  console.log(searchRadius);
   const sightsMarkers = markers.map(({ properties, geometry, kind }) => (
     <LocationMarker key={properties.xid} position={geometry.coordinates} name={properties.name}
       rate={properties.rate} kind={kind} id={properties.xid}
@@ -37,6 +40,9 @@ const Map = () => {
           <MarkerClusterGroup chunkedLoading>
             {sightsMarkers}
           </MarkerClusterGroup>
+          {!isNaN(searchRadius) && (
+            <Circle center={position} radius={searchRadius} />
+          )}
           <Marker position={position} icon={customIcon}>
             <Popup>You are here!</Popup>
           </Marker>
