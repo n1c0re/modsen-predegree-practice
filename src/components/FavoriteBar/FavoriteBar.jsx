@@ -6,11 +6,10 @@ import * as images from '@constants/icons';
 import options from '@constants/options';
 import useFavorites from '@hooks/useFavorites';
 import { toggleFavorite } from '@store/reducers/favoritesIdSlice';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-const FavoriteBar = ({ isOpen }) => {
+const FavoriteBar = () => {
   const { favorites } = useFavorites();
   const [searchText, setSearchText] = useState();
 
@@ -23,10 +22,9 @@ const FavoriteBar = ({ isOpen }) => {
   const handleInputText = (event) => {
     setSearchText(event.currentTarget.value);
   }
-
-  console.log(favorites);
+  
   return (
-    <div className={`favorite ${isOpen ? 'open' : ''}`}>
+    <div className={`favoritebar`}>
       <div className='search-input'>
         <img src={images.searchIconImg} alt='search-icon' />
         <input placeholder='Название' onChange={handleInputText} />
@@ -66,9 +64,5 @@ const FavoriteBar = ({ isOpen }) => {
     </div>
   );
 }
-
-FavoriteBar.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-};
 
 export default FavoriteBar;

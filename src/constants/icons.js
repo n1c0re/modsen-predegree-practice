@@ -4,8 +4,8 @@ import banksImg from '@assets/bank.svg'
 import searchBigImg from '@assets/big-search.svg'
 import cafesImg from '@assets/coffee.svg'
 import culturalImg from '@assets/culture.svg'
-import favouriteOffImg from '@assets/favourite-off.svg'
-import favouriteOnImg from '@assets/favourite-on.svg'
+import favoriteOffImg from '@assets/favorite-off.svg'
+import favoriteOnImg from '@assets/favorite-on.svg'
 import filledHeartImg from '@assets/filled-heart.svg'
 import filledStarImg from '@assets/filled-star.svg'
 import foodsImg from '@assets/food.svg'
@@ -33,8 +33,9 @@ export {
   banksImg,
   cafesImg,
   culturalImg,
-  favouriteOffImg,
-  favouriteOnImg,
+  favoriteOffImg,
+  favoriteOnImg,
+  searchOnImg,
   filledHeartImg,
   filledStarImg,
   foodsImg,
@@ -49,7 +50,6 @@ export {
   searchBigImg,
   searchIconImg,
   searchOffImg,
-  searchOnImg,
   shopsImg,
   sportImg,
   starImg,

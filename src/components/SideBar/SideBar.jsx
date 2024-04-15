@@ -1,24 +1,20 @@
 ﻿import './SideBar.css'
 
-import { favouriteOffImg, favouriteOnImg, loginImg, logoImg, searchOffImg, searchOnImg } from '@constants/icons'
-import { useState } from 'react';
-
-import FavoriteBar from '@/FavoriteBar/FavoriteBar';
-import SearchBar from '@/SearchBar/SearchBar';
+import { favoriteOffImg, favoriteOnImg, loginImg, logoImg, searchOffImg,searchOnImg } from '@constants/icons'
+import routes from '@constants/routes.js'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
-  const [searchBarOpen, setSearchBarOpen] = useState(false);
-  const [favouriteBarOpen, setFavouriteBarOpen] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const toggleSearchBar = () => {
-    setSearchBarOpen(!searchBarOpen);
-    setFavouriteBarOpen(false);
-  }
+    pathname === routes.SEARCH ? navigate(routes.HOME) : navigate(routes.SEARCH)
+  };
 
-  const toggleFavouriteBar = () => {
-    setFavouriteBarOpen(!favouriteBarOpen);
-    setSearchBarOpen(false);
-  }
+  const toggleFavoriteBar = () => {
+    pathname === routes.FAVORITES ? navigate(routes.HOME) : navigate(routes.FAVORITES)
+  };
 
   return (
     <div className='sidebar'>
@@ -27,17 +23,15 @@ const Sidebar = () => {
           <img src={logoImg} alt='logo' />
         </button>
         <button className="sidebar-button" onClick={toggleSearchBar}>
-          <img src={searchBarOpen ? searchOnImg : searchOffImg} alt='search' />
+          <img src={pathname === routes.SEARCH ? searchOnImg : searchOffImg} alt='search' />
         </button>
-        <button className="sidebar-button" onClick={toggleFavouriteBar}>
-          <img src={favouriteBarOpen ? favouriteOnImg : favouriteOffImg} alt='favourite' />
+        <button className="sidebar-button" onClick={toggleFavoriteBar}>
+          <img src={pathname === routes.FAVORITES ? favoriteOnImg : favoriteOffImg} alt='favorite' />
         </button>
       </div>
       <button className='login-button'>
         <img src={loginImg} alt='login' />
       </button>
-      <SearchBar isOpen={searchBarOpen} />
-      <FavoriteBar isOpen={favouriteBarOpen} />
     </div>
   );
 };

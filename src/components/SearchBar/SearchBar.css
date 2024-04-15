@@ -9,9 +9,9 @@
   border-width: 0px 2px 0px 0;
   border-style: solid;
   border-color: #b0b0b0;
-  left: -200vw;
-  transition: left 0.3s ease;
+  left: 6vw;
   padding: 20px;
+  z-index: 1000;
 }
 
 .searchbar.open {
@@ -21,9 +21,6 @@
 @media screen and (max-width: 768px) {
   .searchbar {
     width: 50vw;
-  }
-
-  .searchbar.open {
     left: 14vw;
   }
 }
