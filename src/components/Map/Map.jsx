@@ -30,10 +30,12 @@ const Map = () => {
           <TileLayer
             url={import.meta.env.VITE_TILE_URL}
           />
-          <MarkerClusterGroup chunkedLoading>
+          {pathname ==='/search' &&(
+            <MarkerClusterGroup chunkedLoading>
             <PlaceMarkers />
           </MarkerClusterGroup>
-          {!isNaN(searchRadius) && pathname==='/search' &&(
+          )}
+          {!isNaN(searchRadius) && pathname ==='/search' &&(
             <Circle center={position} radius={searchRadius} />
           )}
           <Marker position={position} icon={customIcon}>
