@@ -19,9 +19,9 @@ const useSights = () => {
   const buildUrl = (position, searchParams) => {
     const radius = (searchParams.searchRadius !== '') ? searchParams.searchRadius : '5000';
     const kinds = Array.isArray(searchParams.selectedOptions) ? searchParams.selectedOptions.join(',') : searchParams.selectedOptions;
-    const name = searchParams.name ? `&name=${searchParams.name}` : '';
+    const name = searchParams.searchText.length >= 3 ? `&name=${searchParams.searchText}` : '';
     return `${import.meta.env.VITE_OTM_URL}radius?radius=${radius}&lon=${position[1]}&lat=${position[0]}
-    &kinds=${kinds}&apikey=${import.meta.env.VITE_OTM_API_KEY}${name}`;
+    &kinds=${kinds}${name}&apikey=${import.meta.env.VITE_OTM_API_KEY}${name}`;
   };
 
   return { markers, getSights };
