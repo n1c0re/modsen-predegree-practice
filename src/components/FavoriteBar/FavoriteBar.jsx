@@ -4,10 +4,12 @@ import './FavoriteBar.css'
 import { undefinedPlaceImg } from '@constants/icons';
 import * as images from '@constants/icons';
 import options from '@constants/options';
+import routes from '@constants/routes';
 import useFavorites from '@hooks/useFavorites';
 import { toggleFavorite } from '@store/reducers/favoritesIdSlice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const FavoriteBar = () => {
   const { favorites } = useFavorites();
@@ -22,7 +24,7 @@ const FavoriteBar = () => {
   const handleInputText = (event) => {
     setSearchText(event.currentTarget.value);
   }
-  
+
   return (
     <div className={`favoritebar`}>
       <div className='search-input'>
@@ -52,7 +54,9 @@ const FavoriteBar = () => {
                   <button className='delete-button' onClick={() => handleToggleFavorite(favorite.xid)}>
                     <img src={images.filledHeartImg} alt='favorite' />
                   </button>
-                  <button className="info-button">&#9658;</button>
+                  <Link to={`/place/${favorite.xid}`}>
+                    <button className="info-button">&#9658;</button>
+                  </Link>
                 </div>
               </div>
             </li>
