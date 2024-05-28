@@ -30,7 +30,7 @@ const Map = () => {
           <TileLayer
             url={import.meta.env.VITE_TILE_URL}
           />
-          {pathname ==='/search' &&(
+          {(
             <MarkerClusterGroup chunkedLoading>
             <PlaceMarkers />
           </MarkerClusterGroup>

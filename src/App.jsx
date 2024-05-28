@@ -8,6 +8,8 @@ import FavoritePlace from '@/FavoritePlace/FavoritePlace'
 import Map from '@/Map/Map'
 import SearchBar from '@/SearchBar/SearchBar'
 import Sidebar from '@/SideBar/SideBar'
+import SignIn from '@/SignIn/SignIn'
+import SignUp from '@/SignUp/SignUp'
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
       <Routes>
         <Route path={routes.FAVORITES} element={<FavoriteBar />} />
         <Route path={routes.SEARCH} element={<SearchBar />} />
-        <Route path={routes.FAVORITE_PLACE} element={<FavoritePlace/>} />
+        <Route path={routes.FAVORITE_PLACE} element={<FavoritePlace />} />
+        <Route path={routes.REGISTER} element={<SignUp />} />
+        <Route path={routes.LOGIN} element={<SignIn />} />
         <Route path='/' element={<></>} />
       </Routes>
     </BrowserRouter>

@@ -4,7 +4,9 @@ import * as images from '@constants/icons';
 import options from '@constants/options';
 import useFavorites from '@hooks/useFavorites';
 import { toggleFavorite } from '@store/reducers/favoritesIdSlice';
-import { useDispatch } from 'react-redux';
+import { setMarkers } from '@store/reducers/sightsSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import styles from './FavoritePlace.module.css'
@@ -21,6 +23,11 @@ const FavoritePlace = () => {
     dispatch(toggleFavorite({ id }));
     navigate(-1);
   };
+
+
+  useEffect(() => {
+    dispatch(setMarkers(favoritePlace));
+  }, [favoritePlace]);
 
   return (
     favoritePlace &&

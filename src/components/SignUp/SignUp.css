@@ -1,0 +1,109 @@
+﻿.sign-up {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-width: 0px 2px 0px 0;
+  border-style: solid;
+  border-color: #b0b0b0;
+  z-index: 1000;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #00a6e3;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.captcha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.captcha input {
+  margin-right: 10px;
+}
+
+button[type="submit"],
+.telegram-btn {
+  background-color: #00a6e3;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.telegram-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.telegram-btn {
+  background-color: #0088cc;
+}
+
+button[type="submit"]:hover,
+.telegram-btn:hover {
+  background-color: #007bb5;
+}
+
+a.login-link {
+  color: #00a6e3;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+a.login-link:hover {
+  text-decoration: underline;
+}
